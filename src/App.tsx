@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Main from './Main';
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TonConnectUIProvider
+        actionsConfiguration={{
+          skipRedirectToWallet: 'ios'
+        }}
+        manifestUrl={
+          'https://raw.githubusercontent.com/sepezho/burton-tonconnect-config/main/config.json'
+        }>
+        <Main />
+      </TonConnectUIProvider>
     </div>
   );
 }
